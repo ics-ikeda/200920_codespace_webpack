@@ -71,7 +71,7 @@ function init() {
   {
     // 立方体のマテリアルとジオメトリを作成
     const material = new THREE.MeshStandardMaterial({
-      color: 0x2233ff,
+      color: 0x33FF44,
       roughness: 0.1,
       metalness: 0.2,
     });
@@ -87,7 +87,7 @@ function init() {
     }
 
     // 立方体を複数作成しランダムに配置
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 500; i++) {
       const box = new THREE.Mesh(geometry, material);
 
       const blockX = Math.floor(Math.random() * BLOCK_NUM);
