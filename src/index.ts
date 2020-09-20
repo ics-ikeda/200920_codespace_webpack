@@ -71,18 +71,36 @@ function init() {
   {
     // 立方体のマテリアルとジオメトリを作成
     const material = new THREE.MeshStandardMaterial({
-      color: 0x0000ff,
+      color: 0x2233ff,
       roughness: 0.1,
       metalness: 0.2,
     });
     const geometry = new THREE.BoxGeometry(45, 45, 45);
 
+    const BLOCK_NUM = 20;
+    const blocks = [];
+    for (let i = 0; i < BLOCK_NUM; i++) {
+      blocks[i] = [];
+      for (let j = 0; j < BLOCK_NUM; j++) {
+        blocks[i][j] = 0;
+      }
+    }
+
     // 立方体を複数作成しランダムに配置
     for (let i = 0; i < 50; i++) {
       const box = new THREE.Mesh(geometry, material);
-      box.position.x = Math.round((Math.random() - 0.5) * 19) * 50 + 25;
-      box.position.y = 25;
-      box.position.z = Math.round((Math.random() - 0.5) * 19) * 50 + 25;
+
+      const blockX = Math.floor(Math.random() * BLOCK_NUM);
+      const blockZ = Math.floor(Math.random() * BLOCK_NUM);
+      const blockY = blocks[blockX][blockZ]++;
+      // const blockX = 10;
+      // const blockZ = 10;
+      // const blockY = 0;
+
+      box.position.x = (blockX - BLOCK_NUM / 2) * 50 + 25;
+      box.position.y = blockY * 50 + 25;
+      box.position.z = (blockZ - BLOCK_NUM / 2) * 50 + 25;
+
       // 影の設定
       box.receiveShadow = true;
       box.castShadow = true;
