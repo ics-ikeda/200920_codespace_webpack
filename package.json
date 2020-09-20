@@ -1,0 +1,14 @@
+{
+  "name": "200920_codespace_webpack",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "scripts" : {
+    "build": "webpack --mode=production",
+    "start": "webpack-dev-server --mode=development"
+  }
+}
